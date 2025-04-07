@@ -71,6 +71,7 @@ JWT_EXPIRE=30d
 ## API Endpoints
 
 ### Authentication
+- `POST /api/auth/register` - Register a new user
 - `POST /api/auth/login` - Login with email and password
 - `GET /api/auth/me` - Get current user (Protected)
 
@@ -107,6 +108,21 @@ The application comes with a seeder utility that creates:
 **Default Admin Login**:
 - Email: admin@skybound.com
 - Password: password123
+
+## API Documentation
+
+This project includes Swagger UI for interactive API documentation:
+
+1. Start the server: `npm start`
+2. Visit: http://localhost:5000/api-docs
+
+The Swagger UI provides:
+- Complete documentation for all endpoints
+- Request/response schemas
+- Interactive testing capability
+- Authentication support
+
+For more detailed testing instructions, see the [API_TESTING_GUIDE.md](./API_TESTING_GUIDE.md) file.
 
 ## Connecting to Frontend
 
