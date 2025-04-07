@@ -66,6 +66,29 @@ exports.createDrone = async (req, res) => {
   }
 };
 
+// @desc    Get available drones for mission assignment
+// @route   GET /api/drones/available
+// @access  Private
+exports.getAvailableDrones = async (req, res) => {
+  try {
+    // Find drones that are either Idle or Charging (available for mission assignment)
+    const availableDrones = await Drone.find({
+      status: { $in: ['Idle', 'Charging'] }
+    });
+
+    res.status(200).json({
+      success: true,
+      count: availableDrones.length,
+      data: availableDrones
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: 'Server Error'
+    });
+  }
+};
+
 // @desc    Update drone status
 // @route   PUT /api/drones/:id/status
 // @access  Private

@@ -1,8 +1,9 @@
 const express = require('express');
 const { 
   getMissionStatus, 
-  updateMissionStatus 
-} = require('../controllers/monitor');
+  updateMissionStatus,
+  getDroneTelemetry
+} = require('../controllers/monitorController');
 
 const router = express.Router();
 
@@ -13,5 +14,9 @@ router.route('/:missionId')
 
 router.route('/:missionId/update')
   .post(protect, updateMissionStatus);
+
+// Route for drone telemetry data
+router.route('/drone/:droneId/telemetry')
+  .get(getDroneTelemetry);
 
 module.exports = router;

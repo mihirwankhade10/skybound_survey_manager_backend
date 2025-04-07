@@ -17,7 +17,7 @@ const app = express();
 // Middleware
 // Configure CORS to allow requests from your frontend
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', '*'], // Add your frontend URL here
+  origin: ['http://localhost:8080', 'http://localhost:8081', 'http://127.0.0.1:3000', '*'], // Add your frontend URL here
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -31,6 +31,7 @@ const missionRoutes = require('./routes/missions');
 const droneRoutes = require('./routes/drones');
 const monitorRoutes = require('./routes/monitor');
 const reportRoutes = require('./routes/reports');
+const dashboardRoutes = require('./routes/dashboard');
 
 // Define routes
 app.use('/api/auth', authRoutes);
@@ -38,6 +39,7 @@ app.use('/api/missions', missionRoutes);
 app.use('/api/drones', droneRoutes);
 app.use('/api/monitor', monitorRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Base route
 app.get('/', (req, res) => {
